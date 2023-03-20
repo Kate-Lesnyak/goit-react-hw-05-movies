@@ -18,6 +18,7 @@ export const Layout = () => {
           </ul>
         </nav>
       </Header>
+
       <main>
         <Outlet />
       </main>

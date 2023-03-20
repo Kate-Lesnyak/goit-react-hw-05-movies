@@ -1,17 +1,37 @@
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
-// import { MoviesList } from 'components/MoviesList/MoviesList';
+import { SearchMoviesList } from 'components/SearchMoviesList/SearchMoviesList';
 import { getSearchMovies } from '../services/api';
 
 const Movies = () => {
-  useEffect(() => { }, [])
-  // state, isLoading...
-  const movies = getSearchMovies();
+  const [searchMovies, setSearchMovies] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    async function saveSearchMovies() {
+      try {
+        setIsLoading(true);
+        setError(null);
+        const data = await getSearchMovies();
+        setSearchMovies(data.results);
+      } catch (error) {
+        setError(error.message);
+      } finally {
+        setIsLoading(false);
+      }
+    } saveSearchMovies();
+  }, []);
 
   return (
     <main>
-      {/* <MoviesList movies={movies} /> */}
-      <ul movies={movies}></ul>
+      <section>
+        <div>
+          {error && <h2>{error}</h2>}
+          {isLoading && <h2>Загружаем фильмы ...</h2>}
+          <SearchMoviesList searchMovies={searchMovies} />
+        </div>
+      </section>
     </main>
   );
 }

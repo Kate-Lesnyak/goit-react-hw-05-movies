@@ -1,10 +1,40 @@
-// import { useParams } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import { getMovieCast } from 'services/api';
+import { CastInfo } from './CastInfo';
 
-// export const Cast = () => {
-//   const { movieId } = useParams();
+export const Cast = () => {
+  const [casts, setCasts] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
 
-//   useEffect(() => {}, []);
-//   // state, isLoading...
+  const { id } = useParams();
 
-//   return <p>Cast: {movieId} </p>;
-// };
+  useEffect(() => {
+    async function saveMovieCast() {
+      try {
+        setIsLoading(true);
+        setError(null);
+        const data = await getMovieCast(id);
+        setCasts(data.cast);
+      } catch (error) {
+        setError(error.message);
+      } finally {
+        setIsLoading(false);
+      }
+    }
+    saveMovieCast();
+  }, [id]);
+
+  return (
+    <main>
+      <section>
+        <div>
+          {error && <h2>{error}</h2>}
+          {isLoading && <h2>Загружаем...</h2>}
+          <CastInfo casts={casts} />
+        </div>
+      </section>
+    </main>
+  );
+};

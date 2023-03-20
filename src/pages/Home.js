@@ -8,19 +8,20 @@ export const Home = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    async function getTrendigMoviesDay() {
+    async function saveTrendigMovies() {
       try {
         setIsLoading(true);
         setError(null);
         const data = await getTrendingMovies();
         setTrendingMovies(data.results);
-        console.log(data);
+        // console.log(data);
       } catch (error) {
         setError(error.message);
       } finally {
         setIsLoading(false);
       }
-    } getTrendigMoviesDay();
+    }
+    saveTrendigMovies();
   }, []);
 
   console.log(trendingMovies);
@@ -29,7 +30,7 @@ export const Home = () => {
       <section>
         <div>
           {error && <h2>{error}</h2>}
-          {isLoading && <h2>Загружаем... ;(</h2>}
+          {isLoading && <h2>Загружаем...</h2>}
           <TrendingMoviesList trendingMovies={trendingMovies} />
         </div>
       </section>
