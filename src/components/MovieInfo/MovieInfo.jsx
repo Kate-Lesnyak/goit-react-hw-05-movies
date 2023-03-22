@@ -6,7 +6,10 @@ export const MovieInfo = ({
   return (
     <>
       <div>
-        <img src={IMAGE_BASE_URL + poster_path} alt={title} width="400" />
+        <img
+          src={poster_path ? IMAGE_BASE_URL + poster_path : 'no photo'}
+          alt={title}
+        />
       </div>
 
       <h2>{title}</h2>
@@ -17,7 +20,9 @@ export const MovieInfo = ({
       <h3>Overview </h3>
       <p>{overview}</p>
 
-      {/* <h3>Genres{Object.values(genres).map(({ name }) => name.join(', '))}</h3> */}
+      <h4>
+        {/* Genres: {Object.values(genres.map(({ name }) => name)).join(', ')} */}
+      </h4>
     </>
   );
 };

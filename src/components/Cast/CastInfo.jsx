@@ -6,7 +6,7 @@ export const CastInfo = ({ casts }) => {
       {casts.map(({ id, name, character, profile_path }) => (
         <li key={id}>
           <img src={IMAGE_CAST_BASE_URL + profile_path} alt={name} />
-          <p>{name}</p>
+          <p>Name: {name}</p>
           <p>Character: {character}</p>
         </li>
       ))}

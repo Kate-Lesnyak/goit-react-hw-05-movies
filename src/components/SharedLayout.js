@@ -1,9 +1,10 @@
+import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 import { Header, Link, Logo } from './App/App.styled';
 
 export const Layout = () => {
   return (
-    <>
+    <div className='container'>
       <Header>
         <Logo>Filmoteka</Logo>
         <nav>
@@ -20,8 +21,10 @@ export const Layout = () => {
       </Header>
 
       <main>
-        <Outlet />
+        <Suspense fallback={<div>Loading page...</div>}>
+          <Outlet />
+        </Suspense>
       </main>
-    </>
+    </div>
   );
 };

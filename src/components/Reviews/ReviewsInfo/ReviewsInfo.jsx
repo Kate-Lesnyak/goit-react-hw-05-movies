@@ -1,7 +1,7 @@
 export const ReviewsInfo = ({ reviews }) => {
   return (
     <ul>
-      {reviews.length ? (
+      {reviews.length > 0 ? (
         reviews.map(({ id, author, content }) => (
           <li key={id}>
             <p>Author: {author}</p>

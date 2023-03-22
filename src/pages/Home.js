@@ -2,7 +2,7 @@ import { TrendingMoviesList } from "components/TrendingMoviesList/TrendingMovies
 import { useEffect, useState } from "react";
 import { getTrendingMovies } from "services/api";
 
-export const Home = () => {
+const Home = () => {
   const [trendingMovies, setTrendingMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -30,10 +30,12 @@ export const Home = () => {
       <section>
         <div>
           {error && <h2>{error}</h2>}
-          {isLoading && <h2>Загружаем...</h2>}
+          {/* {isLoading && <h2>Загружаем...</h2>} */}
           <TrendingMoviesList trendingMovies={trendingMovies} />
         </div>
       </section>
     </main>
   );
 }
+
+export default Home;

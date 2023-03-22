@@ -4,12 +4,16 @@ axios.defaults.baseURL = 'https://api.themoviedb.org/3';
 
 const API_KEY = '3b3588da04245c6a18fc17ccb8868599';
 
+// axios.defaults.params = {
+//   api_key: '3b3588da04245c6a18fc17ccb8868599',
+// };
+
 export const getTrendingMovies = async () => {
   const { data } = await axios.get(`/trending/movie/day?api_key=${API_KEY}`);
   return data;
 }
 
-export const getSearchMovies = async (query = 'cat', page = 1) => {
+export const getSearchMovies = async (query, page = 1) => {
   const { data } = await axios.get(`/search/movie?api_key=${API_KEY}&query=${query}&page=${page}`);
   return data;
 }

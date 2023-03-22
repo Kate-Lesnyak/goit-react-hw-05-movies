@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { getMovieCast } from 'services/api';
 import { CastInfo } from './CastInfo';
 
-export const Cast = () => {
+const Cast = () => {
   const [casts, setCasts] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -38,3 +38,5 @@ export const Cast = () => {
     </main>
   );
 };
+
+export default Cast;
