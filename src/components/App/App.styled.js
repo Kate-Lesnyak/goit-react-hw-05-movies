@@ -1,47 +1,39 @@
-import { NavLink } from 'react-router-dom';
 
 import styled from 'styled-components';
 
+export const Section = styled.section`
+  padding-top: ${({ theme }) => theme.spacing(5)};
+  padding-bottom: ${({ theme }) => theme.spacing(5)};
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.s}) {
+    padding-top: ${({ theme }) => theme.spacing(10)};
+    padding-bottom: ${({ theme }) => theme.spacing(10)};
+  }
+  @media (min-width: ${({ theme }) => theme.breakpoints.l}) {
+    padding-top: ${({ theme }) => theme.spacing(15)};
+    padding-bottom: ${({ theme }) => theme.spacing(15)};
+  }
+`;
+
 export const Container = styled.div`
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 16px;
-`;
+  width: 100%;
 
-export const Header = styled.header`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  padding: 8px 0;
-  margin-bottom: 16px;
-  border-bottom: 1px solid black;
+  padding-left: ${({ theme }) => theme.spacing(5)};
+  padding-right: ${({ theme }) => theme.spacing(5)};
 
-  > nav {
-    display: flex;
+  margin-left: auto;
+  margin-right: auto;
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.s}) {
+    width: ${({ theme }) => theme.breakpoints.s};
+  }
+  @media (min-width: ${({ theme }) => theme.breakpoints.m}) {
+    width: ${({ theme }) => theme.breakpoints.m};
+  }
+  @media (min-width: ${({ theme }) => theme.breakpoints.l}) {
+    width: ${({ theme }) => theme.breakpoints.l};
   }
 `;
 
-export const Logo = styled.p`
-  font-weight: 700;
-  margin: 0;
-`;
 
-export const Link = styled(NavLink)`
-/* color: black;
 
-  &.active {
-    color: orange;
-  } */
-
-  padding: 8px 16px;
-  border-radius: 4px;
-  text-decoration: none;
-  color: black;
-  font-weight: 500;
-
-  &.active {
-    color: white;
-    background-color: orangered;
-  }
-`

@@ -1,6 +1,8 @@
-import { TrendingMoviesList } from "components/TrendingMoviesList/TrendingMoviesList";
 import { useEffect, useState } from "react";
 import { getTrendingMovies } from "services/api";
+
+import { Container, Section } from "components/App/App.styled";
+import { TrendingMoviesList } from "components/TrendingMoviesList/TrendingMoviesList";
 
 const Home = () => {
   const [trendingMovies, setTrendingMovies] = useState([]);
@@ -27,13 +29,13 @@ const Home = () => {
   console.log(trendingMovies);
   return (
     <main>
-      <section>
-        <div>
+      <Section>
+        <Container>
           {error && <h2>{error}</h2>}
           {/* {isLoading && <h2>Загружаем...</h2>} */}
           <TrendingMoviesList trendingMovies={trendingMovies} />
-        </div>
-      </section>
+        </Container>
+      </Section>
     </main>
   );
 }

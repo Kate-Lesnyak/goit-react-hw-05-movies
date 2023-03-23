@@ -1,3 +1,4 @@
+import { StyledImg } from './MovieInfo.styled';
 export const MovieInfo = ({
   movie: { title, poster_path, overview, release_date, genres, vote_average },
 }) => {
@@ -5,12 +6,12 @@ export const MovieInfo = ({
 
   return (
     <>
-      <div>
+      <StyledImg>
         <img
           src={poster_path ? IMAGE_BASE_URL + poster_path : 'no photo'}
           alt={title}
         />
-      </div>
+      </StyledImg>
 
       <h2>{title}</h2>
       {/* <p>{release_date.slice(0, 4)}</p> */}

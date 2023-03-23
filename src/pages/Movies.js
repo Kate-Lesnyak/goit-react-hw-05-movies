@@ -6,6 +6,7 @@ import { getSearchMovies } from '../services/api';
 
 import { SearchMoviesList } from 'components/SearchMoviesList/SearchMoviesList';
 import { SearchForm } from 'components/SearchForm/SearchForm';
+import { Section, Container } from 'components/App/App.styled';
 
 const Movies = () => {
   const [movies, setMovies] = useState([]);
@@ -51,15 +52,15 @@ const Movies = () => {
 
   return (
     <main>
-      <section>
-        <div className='container'>
+      <Section>
+        <Container>
           <SearchForm onSubmit={handleSubmit} />
 
           {error && <h2>{error}</h2>}
           {/* {isLoading && <h2>Загружаем фильмы ...</h2>} */}
           <SearchMoviesList movies={movies} />
-        </div>
-      </section>
+        </Container>
+      </Section>
     </main>
   );
 }

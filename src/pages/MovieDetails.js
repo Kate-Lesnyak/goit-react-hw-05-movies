@@ -1,7 +1,9 @@
-import { MovieInfo } from 'components/MovieInfo/MovieInfo';
 import { useState, useEffect, useRef, Suspense } from 'react';
 import { Link, Outlet, useParams, useLocation } from 'react-router-dom';
 import { getMovieDetails } from '../services/api';
+
+import { Container, Section } from 'components/App/App.styled';
+import { MovieInfo } from 'components/MovieInfo/MovieInfo';
 
 const MovieDetails = () => {
   const [movie, setMovie] = useState([]);
@@ -31,8 +33,8 @@ const MovieDetails = () => {
 
   return (
     <main>
-      <section>
-        <div>
+      <Section>
+        <Container>
           {error && <h2>{error}</h2>}
           {/* {isLoading && <h2>Загружаю информацию о фильме ...</h2>} */}
 
@@ -54,8 +56,8 @@ const MovieDetails = () => {
             <Outlet />
           </Suspense>
 
-        </div>
-      </section>
+        </Container>
+      </Section>
     </main>
   );
 }
