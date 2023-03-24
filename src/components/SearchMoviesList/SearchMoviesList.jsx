@@ -1,11 +1,14 @@
-import { NavLink, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 import {
   MovieItem,
   MovieList,
   MovieThumb,
   MovieTitle,
+  MovieItemLink,
 } from 'components/SharedLayout/SharedLayout.styled';
+
+import noImage from '../../images/no-image.jpg';
 
 export const SearchMoviesList = ({ movies }) => {
   const location = useLocation();
@@ -16,16 +19,16 @@ export const SearchMoviesList = ({ movies }) => {
     <MovieList>
       {movies.map(({ id, poster_path, title }) => (
         <MovieItem key={id}>
-          <NavLink
-            to={`${id}`}
-            state={{ from: location }}
-            style={{ textDecoration: 'none' }}
-          >
+          <MovieItemLink to={`${id}`} state={{ from: location }}>
             <MovieThumb>
-              <img src={IMAGE_BASE_URL + poster_path} alt={title} />
+              <img
+                src={poster_path ? IMAGE_BASE_URL + poster_path : noImage}
+                alt={title}
+                loading="lazy"
+              />
             </MovieThumb>
             <MovieTitle>{title}</MovieTitle>
-          </NavLink>
+          </MovieItemLink>
         </MovieItem>
       ))}
     </MovieList>

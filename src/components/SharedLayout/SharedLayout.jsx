@@ -3,12 +3,15 @@ import { Outlet } from 'react-router-dom';
 
 import { Container } from '../App/App.styled';
 import { TbMovie } from 'react-icons/tb';
+
 import {
   HeaderWrapper,
   StyledSharedLayout,
   StyledNavLink,
   LinkWrapper,
+  StyledLinkLogo,
 } from './SharedLayout.styled';
+import { Loader } from 'components/Loader';
 
 export const Layout = () => {
   return (
@@ -16,7 +19,10 @@ export const Layout = () => {
       <StyledSharedLayout>
         <Container>
           <HeaderWrapper>
-            <TbMovie size="40px" />
+            <StyledLinkLogo to="/">
+              <TbMovie size="48px" />
+            </StyledLinkLogo>
+
             <nav>
               <LinkWrapper>
                 <li>
@@ -33,7 +39,7 @@ export const Layout = () => {
       </StyledSharedLayout>
 
       <main>
-        <Suspense fallback={<div>Loading page...</div>}>
+        <Suspense fallback={<Loader />}>
           <Outlet />
         </Suspense>
       </main>

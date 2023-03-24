@@ -1,1 +1,1 @@
-export * from './TrendingMoviesList.styled';
+export * from './TrendingMoviesList.jsx';

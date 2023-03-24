@@ -3,12 +3,12 @@ import { Routes, Route } from 'react-router-dom';
 import { GlobalStyle } from '../GlobalStyle';
 
 import { Layout } from 'components/SharedLayout/SharedLayout';
-// import { Cast } from 'components/Cast';
-// import { Reviews } from 'components/Reviews';
 
-const Home = lazy(() => import('../../pages/Home'));
+const Home = lazy(() => import('../../pages/Home/Home'));
 const Movies = lazy(() => import('../../pages/Movies'));
-const MovieDetails = lazy(() => import('../../pages/MovieDetails'));
+const MovieDetails = lazy(() =>
+  import('../../pages/MovieDetails/MovieDetails')
+);
 const Cast = lazy(() => import('../Cast/Cast'));
 const Reviews = lazy(() => import('../Reviews/Reviews'));
 

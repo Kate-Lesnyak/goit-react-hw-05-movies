@@ -1,7 +1,10 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { getMovieReviews } from 'services/api';
-import { ReviewsInfo } from './ReviewsInfo/ReviewsInfo';
+import { ReviewsList } from './ReviewsList';
+
+import { Loader } from 'components/Loader';
+import { MovieError } from 'components/MovieError';
 
 const Reviews = () => {
   const [reviews, setReviews] = useState([]);
@@ -28,15 +31,17 @@ const Reviews = () => {
   }, [id]);
 
   return (
-    <main>
-      <section>
-        <div>
-          {error && <h2>{error}</h2>}
-          {isLoading && <h2>Загружаем инфу ...</h2>}
-          <ReviewsInfo reviews={reviews} />
-        </div>
-      </section>
-    </main>
+    <>
+      {error && (
+        <MovieError
+          message={`Sorry, but the ${id} was not found. Please try again later!`}
+        />
+      )}
+
+      {isLoading && <Loader />}
+
+      <ReviewsList reviews={reviews} />
+    </>
   );
 };
 

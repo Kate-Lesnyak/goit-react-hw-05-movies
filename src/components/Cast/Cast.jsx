@@ -1,7 +1,10 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { getMovieCast } from 'services/api';
-import { CastInfo } from './CastInfo';
+
+import { CastList } from './CastList';
+import { Loader } from 'components/Loader';
+import { MovieError } from 'components/MovieError';
 
 const Cast = () => {
   const [casts, setCasts] = useState([]);
@@ -27,15 +30,17 @@ const Cast = () => {
   }, [id]);
 
   return (
-    <main>
-      <section>
-        <div>
-          {error && <h2>{error}</h2>}
-          {isLoading && <h2>Загружаем...</h2>}
-          <CastInfo casts={casts} />
-        </div>
-      </section>
-    </main>
+    <>
+      {error && (
+        <MovieError
+          message={`Sorry, but the ${id} was not found. Please try again later!`}
+        />
+      )}
+
+      {isLoading && <Loader />}
+
+      <CastList casts={casts} />
+    </>
   );
 };
 

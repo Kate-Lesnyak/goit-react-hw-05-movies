@@ -4,13 +4,16 @@ import { useSearchParams } from 'react-router-dom';
 import { nanoid } from 'nanoid';
 import { getSearchMovies } from '../services/api';
 
-import { SearchMoviesList } from 'components/SearchMoviesList/SearchMoviesList';
-import { SearchForm } from 'components/SearchForm/SearchForm';
 import { Section, Container } from 'components/App/App.styled';
+
+import { SearchMoviesList } from 'components/SearchMoviesList';
+import { SearchForm } from 'components/SearchForm';
+import { MovieError } from 'components/MovieError';
+import { Loader } from 'components/Loader';
+
 
 const Movies = () => {
   const [movies, setMovies] = useState([]);
-  // const [searchValue, setSearchValue] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const [reqId, setReqId] = useState(null);
@@ -36,32 +39,29 @@ const Movies = () => {
     } saveSearchMovies();
   }, [movieTitle, reqId]);
 
-  // const visibleMovies = movies.filter(movie => movie.title.includes(movieTitle));
-
-
   const handleSubmit = newValue => {
     setSearchParams({ movieTitle: newValue });
-    // setSearchValue(newValue);
     setReqId(nanoid());
-    // setPage(1);
     setMovies([]);
-    // setShowBtn(false);
     setError(null);
   };
 
-
   return (
-    <main>
-      <Section>
-        <Container>
-          <SearchForm onSubmit={handleSubmit} />
+    <Section>
+      <Container>
+        <SearchForm onSubmit={handleSubmit} />
 
-          {error && <h2>{error}</h2>}
-          {/* {isLoading && <h2>Загружаем фильмы ...</h2>} */}
-          <SearchMoviesList movies={movies} />
-        </Container>
-      </Section>
-    </main>
+        {error && (
+          <MovieError
+            message={`Sorry, but the ${movieTitle} was not found. Please try again later!`}
+          />
+        )}
+
+        {isLoading && <Loader />}
+
+        <SearchMoviesList movies={movies} />
+      </Container>
+    </Section>
   );
 }
 

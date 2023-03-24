@@ -4,14 +4,16 @@ export const theme = Object.freeze({
     white: '#f2f2f2',
     primaryTextColor: '#000000',
     buttonTextColor: '#2C2B2B',
-
+    errorColor: '#b70208',
     backgroundColor: '#338309',
     borderInputColor: '#010101',
+    backgroundLoaderColor: 'rgba(0, 0, 0, 0.6)',
   },
 
   boxShadow: '0px 1px 3px 0px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px - 1px rgba(0, 0, 0, 0.12)',
 
   borderColor: '1px solid #eeeeee',
+
 
   fontSizes: {
     small: '14px',

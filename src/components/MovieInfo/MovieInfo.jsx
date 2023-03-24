@@ -1,29 +1,45 @@
-import { StyledImg } from './MovieInfo.styled';
+import {
+  MovieWrapper,
+  StyledAverage,
+  StyledHeadingGenres,
+  StyledHeadingOverview,
+  StyledHeadingTitle,
+  StyledPparagraph,
+} from './MovieInfo.styled';
+
+import noImage from '../../images/no-image.jpg';
+
 export const MovieInfo = ({
   movie: { title, poster_path, overview, release_date, genres, vote_average },
 }) => {
   const IMAGE_BASE_URL = 'https://image.tmdb.org/t/p/w500/';
 
   return (
-    <>
-      <StyledImg>
-        <img
-          src={poster_path ? IMAGE_BASE_URL + poster_path : 'no photo'}
-          alt={title}
-        />
-      </StyledImg>
+    <MovieWrapper>
+      <img
+        src={poster_path ? IMAGE_BASE_URL + poster_path : noImage}
+        alt={title}
+        width="300"
+      />
 
-      <h2>{title}</h2>
-      {/* <p>{release_date.slice(0, 4)}</p> */}
+      <div>
+        <StyledHeadingTitle>
+          {title} ({release_date && release_date.slice(0, 4)})
+        </StyledHeadingTitle>
 
-      {/* <p>{vote_average.toFixed(1)}</p> */}
+        <StyledAverage>
+          User score: {(vote_average * 10).toFixed(1)}%
+        </StyledAverage>
 
-      <h3>Overview </h3>
-      <p>{overview}</p>
+        <StyledHeadingOverview>Overview </StyledHeadingOverview>
+        <StyledPparagraph>{overview}</StyledPparagraph>
 
-      <h4>
-        {/* Genres: {Object.values(genres.map(({ name }) => name)).join(', ')} */}
-      </h4>
-    </>
+        <StyledHeadingGenres>Genres: </StyledHeadingGenres>
+        <StyledPparagraph>
+          {genres > 0 &&
+            Object.values(genres.map(({ name }) => name)).join(', ')}
+        </StyledPparagraph>
+      </div>
+    </MovieWrapper>
   );
 };
