@@ -29,7 +29,6 @@ const Home = () => {
     saveTrendigMovies();
   }, []);
 
-  console.log(trendingMovies);
   return (
     <Section>
       <Container>

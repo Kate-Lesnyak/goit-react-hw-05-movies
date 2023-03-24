@@ -26,6 +26,5 @@ export const getMovieCast = async (id) => {
 
 export const getMovieReviews = async (id) => {
   const { data } = await axios.get(`/movie/${id}/reviews?api_key=${API_KEY}`);
-  console.log(data);
   return data;
 }
