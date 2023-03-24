@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
 import { nanoid } from 'nanoid';
-import { getSearchMovies } from '../services/api';
+import { getSearchMovies } from '../../services/api';
 
 import { Section, Container } from 'components/App/App.styled';
 
@@ -10,7 +10,6 @@ import { SearchMoviesList } from 'components/SearchMoviesList';
 import { SearchForm } from 'components/SearchForm';
 import { MovieError } from 'components/MovieError';
 import { Loader } from 'components/Loader';
-
 
 const Movies = () => {
   const [movies, setMovies] = useState([]);
